@@ -1,0 +1,28 @@
+=font-size($size,$line-height:1.5)
+
+	font-size: $size * 1px
+	font-size: $size * .1rem
+	line-height: $size * $line-height * 1px
+	line-height: $line-height * 1em
+
+$no-mq-support: false !default
+
+=breakpoint($query, $max-width: false)
+	@if $no-mq-support
+		@if $query
+			@content
+	@else if $max-width
+		@media ( 'min-width:' + $query ) and ('max-width:' + $max-width)
+			@content
+	@else
+		@media ( 'min-width:' + $query )
+			@content
+
+=webfont($name,$font,$svg_name,$weight:400,$style:normal)
+
+	@font-face
+		font-family: '#{$name}'
+		font-weight: $weight
+		font-style: $style
+		src: url('#{$font}.eot')
+		src: url('#{$font}.eot') format('embedded-opentype'), url('#{$font}.woff') format('woff'), url('#{$font}.ttf') format('truetype'),url('#{$font}.svg##{$svg_name}') format('svg')
