@@ -1,0 +1,11 @@
+/* ======= GLOBAL ITEMS ======= */
+/* +++++++ GLOBAL +++++++ */
+.fixed-bottom {
+  position: fixed;
+  bottom: 20px;
+  max-width: 1170px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%; }
+
+/* ======= MODULES======= */
