@@ -1,1 +1,83 @@
 <h1>Join</h1>
+<form name="join_form" ng-submit="create_user()" >
+
+	<div class="form-group" ng-class="{'has-error':join_form.first_name_invalid}">
+		<input
+			class="form-control"
+			name="first_name"
+			ng-model="new_user.first_name"
+			placeholder="First Name"
+			type="text"
+			required
+			ng-blur="join_form.first_name_invalid = !join_form.first_name.$valid"
+		/>
+		<label class="control-label" ng-show="join_form.first_name.$error.required && join_form.first_name_invalid ">First Name is Required</label>
+	</div>
+	<div class="form-group" ng-class="{'has-error':join_form.last_name_invalid}">
+		<input
+			class="form-control"
+			name="last_name"
+			ng-model="new_user.last_name"
+			placeholder="Last Name"
+			type="text"
+			required
+			ng-blur="join_form.last_name_invalid = !join_form.last_name.$valid"
+		/>
+		<label class="control-label" ng-show="join_form.last_name.$error.required && join_form.last_name_invalid ">Last Name is Required</label>
+	</div>
+	<div class="form-group" ng-class="{'has-error':join_form.email_invalid}">
+		<div ng-show="new_user.error">{{new_user.error}}</div>
+		<input
+			class="form-control"
+			name="email"
+			ng-model="new_user.email"
+			placeholder="email"
+			type="email"
+			required
+			ng-blur="join_form.email_invalid = !join_form.email.$valid"
+		/>
+		<label class="control-label" ng-show="join_form.email.$error.email">Email is not Valid</label>
+		<label class="control-label" ng-show="join_form.email.$error.required && join_form.email_invalid ">Email is Required</label>
+
+	</div>
+
+	<div class="form-group" ng-class="{'has-error': join_form.password_invalid}" >
+		<input
+			class="form-control"
+			name="password"
+			ng-model="new_user.password"
+			placeholder="password"
+			type="password"
+			required
+			ng-minlength="6"
+			ng-blur="join_form.password_invalid = !join_form.password.$valid"
+		/>
+		<label class="control-label" ng-show="join_form.password.$error.minlength">Password is to short</label>
+		<label class="control-label" ng-show="join_form.password.$error.required && join_form.password_invalid ">Password is Required</label>
+
+	</div>
+
+	<div class="form-group" ng-class="{'has-error': join_form.confirm_invalid}">
+		<input
+			class="form-control"
+			name="confirm"
+			ng-model="new_user.confirm"
+			placeholder="confirm password"
+			ng-change="validatePassword()"
+			type="password"
+			required
+			ng-minlength="6"
+			ng-blur="join_form.confirm_invalid = !join_form.confirm.$valid"
+			 />
+		<label class="control-label" ng-show="join_form.confirm.$error.notMatching">Passwords do not match</label>
+		<label class="control-label" ng-show="join_form.confirm.$error.required && join_form.confirm_invalid ">Confirm is Required</label>
+
+	</div>
+	<div class="form-group">
+	<input
+		class="form-control btn btn-primary btn-block"
+		type="submit"
+		ng-disabled="join_form.$invalid"
+		value="sign up" />
+	</div>
+</form>
