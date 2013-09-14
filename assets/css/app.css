@@ -23,4 +23,10 @@ body {
       float: left;
       margin-left: 0px; } }
 
+.navbar-collapse.collapse {
+  float: none; }
+  @media (min-width: 48em) {
+    .navbar-collapse.collapse {
+      float: left; } }
+
 /* ======= MODULES======= */
