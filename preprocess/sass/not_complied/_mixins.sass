@@ -7,7 +7,22 @@
 
 $no-mq-support: false !default
 
+// sizes in px
+$xs-size: 480
+$sm-size: 768
+$md-size: 992
+$large-size: 1200
 =breakpoint($query, $max-width: false)
+
+	@if $query == 'xs'
+		$query: $xs-size * 0.0625em
+	@else if $query == 'sm'
+		$query: $sm-size * 0.0625em
+	@else if $query == 'md'
+		$query: $md-size * 0.0625em
+	@else if $query == 'lg'
+		$query: $large-size * 0.0625em
+
 	@if $no-mq-support
 		@if $query
 			@content

@@ -5,21 +5,25 @@ OpenCall.config(function($routeProvider)
 	.when("/",{
 		templateUrl: 'app/views/events.html',
 		controller: "Events",
-		authRequired: true
+		authRequired: true,
+		title: 'Events'
 	})
 	.when("/welcome",{
 		templateUrl: 'app/views/welcome.html',
 		controller: "User",
-		authRequired: false
+		authRequired: false,
+		title: 'Welcome'
 	})
 	.when("/join",{
 		templateUrl: 'app/views/join.html',
 		controller: "User",
-		authRequired: false
+		authRequired: false,
+		title: 'Join'
 	})
 	.when("/login",{
 		templateUrl: 'app/views/login.html',
 		controller: "User",
-		authRequired: false
+		authRequired: false,
+		title: 'Login'
 	});
 });

@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+	  <div class="navbar-header">
+			<button type="button" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<button type="button" class="btn btn-default navbar-btn pull-left">Back</button>
+			<a class="navbar-brand" href="#">{{page_title}}</a>
+		</div>
+		<div collapse="navCollapsed" class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="#/create">Create Event</a>
+				</li>
+				<li>
+					<a href="#/profile">My Profile</a>
+				</li>
+				<li>
+					<a href="#/chat">Chat</a>
+				</li>
+				<li>
+					<a href="#/notfications">Notifcations</a>
+				</li>
+				<li>
+					<a ng-click="logout()">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

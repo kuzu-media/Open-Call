@@ -2,7 +2,8 @@
 <html lang="en" ng-app="OpenCall">
 <head>
 	<meta charset="UTF-8">
-	<title>Open Call</title>
+	<title ng-bind="$root.page_title + ' - Open Call'">Open Call</title>
+
 
 	<meta NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +18,17 @@
 	<!-- Application -->
 	<script src="assets/js/app.min.js"></script>
 
+	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+	<script src="assets/js/ui-bootstrap-custom-0.6.0.min.js"></script>
+
+
 	<!-- CSS -->
 	<link rel="stylesheet" href="assets/css/bootstrap.css" />
 	<link rel="stylesheet" href="assets/css/app.css" />
 </head>
 <body>
 	<div class="container" ng-controller="User">
-		<a ng-click="logout()" ng-show="user.id" class="btn btn-default pull-right">Logout</a>
+		<navbar></navbar>
 	</div>
 	<div class="container" ng-view></div>
 </body>

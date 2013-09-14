@@ -1,8 +1,7 @@
 /*global OpenCall */
 /*jshint devel:true */
 
-
-OpenCall.controller("User",['$scope','$location','angularFireAuth','angularFireCollectionExtended','FIREBASE_URL',function($scope,$location,angularFireAuth,angularFireCollectionExtended,FIREBASE_URL)
+OpenCall.controller("User",['$scope','$rootScope','$location','angularFireAuth','angularFireCollectionExtended','FIREBASE_URL',function($scope,$rootScope,$location,angularFireAuth,angularFireCollectionExtended,FIREBASE_URL)
 {
 	$scope.login = function()
 	{
@@ -21,10 +20,8 @@ OpenCall.controller("User",['$scope','$location','angularFireAuth','angularFireC
 
 	$scope.create_user = function()
 	{
-		console.log('hello');
 		// create the user
 		angularFireAuth.createUser($scope.new_user.email,$scope.new_user.password,function(err,user){
-			console.log('user',user);
 			if(user)
 			{
 				angularFireCollectionExtended(FIREBASE_URL+"users").then(function(users)
@@ -55,6 +52,15 @@ OpenCall.controller("User",['$scope','$location','angularFireAuth','angularFireC
 	});
 
 	$scope.$on("angularFireAuth:logout", function() {
+		$scope.name = null;
 		$location.path("/welcome");
+
+	});
+
+	$scope.$on("angularFireAuth:login", function() {
+		angularFireCollectionExtended(FIREBASE_URL+"users").then(function(users)
+		{
+			$scope.name = users.getByKey('id',$rootScope.user.id).first_name;
+		});
 	});
 }]);
