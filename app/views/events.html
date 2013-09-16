@@ -1,1 +1,18 @@
 <h1>Events</h1>
+
+  <div class="list-group" >
+  	<div class="list-group-item clearfix" ng-repeat="event in events">
+  		<a href="#/events/{{event.$id}}">
+
+  			<div class="row">
+  				<div class="col-xs-2"></div>
+  				<div class="col-xs-10">
+		  			<h4 class="col-xs-12">{{event.title}}</h4>
+		  			<p class="col-xs-6">{{event.date }} {{event.time}}</p>
+					<p class="col-xs-6">{{event.skill_level}}</p>
+					<p class="col-xs-12">{{event.attendees}}</p>
+				</div>
+			</div>
+  		</a>
+  	</div>
+  </div>
