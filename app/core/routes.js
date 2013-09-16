@@ -8,6 +8,12 @@ OpenCall.config(function($routeProvider)
 		authRequired: true,
 		title: 'Events'
 	})
+	.when("/events/:event_id",{
+		templateUrl: 'app/views/event.html',
+		controller: "Events",
+		authRequired: true,
+		title: ''
+	})
 	.when("/welcome",{
 		templateUrl: 'app/views/welcome.html',
 		controller: "User",

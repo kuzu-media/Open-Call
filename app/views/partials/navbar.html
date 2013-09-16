@@ -10,8 +10,11 @@
 			<button type="button" class="btn btn-default navbar-btn pull-left" back-button>Back</button>
 			<a class="navbar-brand" href="#">{{page_title}}</a>
 		</div>
-		<div collapse="navCollapsed" class="collapse navbar-collapse navbar-ex1-collapse">
+		<div ng-show="logged_in" collapse="navCollapsed" class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
+				<li>
+					<a href="#/">Events</a>
+				</li>
 				<li>
 					<a href="#/create">Create Event</a>
 				</li>

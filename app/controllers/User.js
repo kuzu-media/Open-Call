@@ -54,13 +54,15 @@ OpenCall.controller("User",['$scope','$rootScope','$location','angularFireAuth',
 	$scope.$on("angularFireAuth:logout", function() {
 		$scope.name = null;
 		$location.path("/welcome");
+		$rootScope.logged_in = false;
 
 	});
 
 	$scope.$on("angularFireAuth:login", function() {
 		angularFireCollectionExtended(FIREBASE_URL+"users").then(function(users)
 		{
-			$scope.name = users.getByKey('id',$rootScope.user.id).first_name;
+			$rootScope.user_info = users.getByKey('id',$rootScope.user.id);
+			$rootScope.logged_in = true;
 		});
 	});
 }]);
