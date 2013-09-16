@@ -1,0 +1,87 @@
+<form name="create_event" class="" ng-submit="create()">
+	<div class="form-group">
+		<label for="title" class="sr-only">Title</label>
+		<input
+			type="text"
+			id="title"
+			ng-model="event.title"
+			name="title"
+			placeholder="Title"
+			class="form-control" />
+	</div>
+	<div class="form-group">
+		<label for="type" class="sr-only">Type</label>
+		<input
+			type="text"
+			id="type"
+			ng-model="type"
+			name="type"
+			placeholder="Type"
+			class="form-control"
+			typeahead="cat.name for cat in subcategories | filter:$viewValue | limitTo:8"
+			typeahead-on-select="event.cat_id = $item.$id"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="skill_level" class="sr-only">Skill Level</label>
+		<select
+			type="text"
+			id="skill_level"
+			ng-model="event.skill_level"
+			name="skilllevel"
+			class="form-control"
+		>
+			<option value="" disabled>Skill Level</option>
+			<option value="Beginner">Beginner</option>
+			<option value="Intermediate">Intermediate</option>
+			<option value="Advanced">Advanced</option>
+			<option value="Expert">Expert</option>
+			<option value="N/A">N/A</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="location" class="sr-only">Location</label>
+		<input
+			type="text"
+			id="location"
+			ng-model="event.location"
+			name="location"
+			placeholder="Location"
+			class="form-control"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="date" class="sr-only">Date</label>
+		<input
+			type="date"
+			name="date"
+			id="date"
+			ng-model="event.date"
+			class="form-control"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="time" class="sr-only">Time</label>
+		<input
+			type="time"
+			id="time"
+			name="time"
+			ng-model="event.time"
+			class="form-control"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="description" class="sr-only">Description</label>
+		<textarea
+			type="text"
+			id="description"
+			ng-model="event.description"
+			name="description"
+			placeholder="Description"
+			class="form-control"
+		></textarea>
+	</div>
+	<div>
+		<input type="submit" value="Create Event" class="btn btn-primary btn-block">
+	</div>
+</form>
