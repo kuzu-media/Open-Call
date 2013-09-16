@@ -63,6 +63,11 @@ OpenCall.controller("User",['$scope','$rootScope','$location','angularFireAuth',
 		{
 			$rootScope.user_info = users.getByKey('id',$rootScope.user.id);
 			$rootScope.logged_in = true;
+
+			angularFireCollectionExtended(FIREBASE_URL+"notifications/"+$rootScope.user_info.$id).then(function(notifications)
+			{
+				$scope.notifcations = notifications;
+			});
 		});
 	});
 }]);

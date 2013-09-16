@@ -1,7 +1,7 @@
 /* global OpenCall */
 /*jshint devel:true */
 
-OpenCall.controller("Events",['angularFireCollectionExtended','FIREBASE_URL','$scope','$filter','$routeParams','$rootScope',function(angularFireCollectionExtended,FIREBASE_URL,$scope,$filter,$routeParams,$rootScope)
+OpenCall.controller("Events",['angularFireCollectionExtended','FIREBASE_URL','$scope','$filter','$routeParams','$rootScope','$location',function(angularFireCollectionExtended,FIREBASE_URL,$scope,$filter,$routeParams,$rootScope,$location)
 {
 	angularFireCollectionExtended(FIREBASE_URL+"categories/sub").then(function(subcategories)
 	{
@@ -29,6 +29,28 @@ OpenCall.controller("Events",['angularFireCollectionExtended','FIREBASE_URL','$s
 		$scope.event.host.name = $rootScope.user_info.first_name + " " + $rootScope.user_info.last_name;
 		$scope.event.host.id = $rootScope.user_info.$id;
 		$scope.events.add($scope.event);
+		$scope.event = {};
+		$location.path('/');
+	};
+
+	$scope.join = function()
+	{
+		if(typeof $scope.event.requests === "undefined")
+		{
+			$scope.event.requests = [];
+		}
+		$scope.event.requests.push($rootScope.user_info.$id);
+		$scope.events.update($scope.event);
+
+		angularFireCollectionExtended(FIREBASE_URL+"notifications/"+$scope.event.host.id).then(function(notifications)
+		{
+			var not = {
+					type: 1,
+					event_id: $scope.event.$id,
+					user_id: $rootScope.user_info.$id
+				};
+			notifications.add(not);
+		});
 	};
 }
 ]);

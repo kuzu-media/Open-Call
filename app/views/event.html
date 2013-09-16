@@ -18,7 +18,7 @@
 		<h4>{{event.host.name}}</h4>
 	</div>
 </div>
-<div class="btn btn-primary btn-block">Join</div>
+<a ng-click="join()" class="btn btn-primary btn-block">Join</a>
 <h3>Attendees</h3>
 <div class="row" ng-repeat="attendee in event.attendees">
 	<div class="col-xs-2">
