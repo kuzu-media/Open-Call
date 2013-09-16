@@ -1,7 +1,7 @@
 /*jshint devel:true */
 /*global angular */
 
-var OpenCall = angular.module("OpenCall", ["firebase","ui.bootstrap3.collapse"]);
+var OpenCall = angular.module("OpenCall", ["firebase","ui.bootstrap"]);
 
 OpenCall.run(['angularFireAuth',"FIREBASE_URL","firebaseRefManager","$rootScope",'$route',function(angularFireAuth,FIREBASE_URL,firebaseRefManager,$rootScope, $route)
 {
