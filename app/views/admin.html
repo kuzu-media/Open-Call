@@ -35,7 +35,7 @@
 			name="category"
 			class="form-control"
 		>
-		<option ng-repeat="cat in categories" value="{{cat.$id}}">{{cat.name}}</option>
+		<option ng-repeat="(id,cat) in categories" value="{{id}}">{{cat.name}}</option>
 		</select>
 	</div>
 	<div class="form-group">
@@ -43,10 +43,10 @@
 	</div>
 </form>
 <ul>
-	<li ng-repeat="cat in categories">
+	<li ng-repeat="(id,cat) in categories">
 		{{cat.name}}
 		<ul>
-			<li ng-repeat="sub in subcategories | filter:{category: cat.$id}">{{sub.name}} <a ng-click="delete(sub.$id)" class="text-danger">X</a></li>
+			<li ng-repeat="(id,sub) in subcategories | filter:{category: id}">{{sub.name}} <a ng-click="delete(id)" class="text-danger">X</a></li>
 		</ul>
 	</li>
 </ul>

@@ -14,3 +14,14 @@ angular.module("firebase").factory("firebaseRefManager",["Firebase",function(Fir
 		return refs[url];
 	};
 }]);
+
+angular.module("firebase").factory("angularFireExtended",["firebaseRefManager",'angularFire',function(firebaseRefManager, angularFire)
+{
+	return function (url, scope, item)
+	{
+		var ref = firebaseRefManager(url);
+		angularFire(ref, scope, item);
+
+
+	};
+}]);

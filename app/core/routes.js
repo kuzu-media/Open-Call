@@ -36,11 +36,17 @@ OpenCall.config(function($routeProvider)
 		controller: "Events",
 		authRequired: true,
 		title: 'Create an Event'
-	}).
-	when("/admin",{
+	})
+	.when("/admin",{
 		templateUrl:'app/views/admin.html',
 		controller: 'Admin',
 		authRequired: true,
 		title: 'Admin'
+	})
+	.when("/notifications",{
+		templateUrl:'app/views/notifications.html',
+		controller: 'Notifications',
+		authRequired: true,
+		title: 'Notifications'
 	});
 });

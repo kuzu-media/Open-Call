@@ -1,8 +1,8 @@
 <h1>Events</h1>
 
   <div class="list-group" >
-  	<div class="list-group-item clearfix" ng-repeat="event in events">
-  		<a href="#/events/{{event.$id}}">
+  	<div class="list-group-item clearfix" ng-repeat="(id,event) in events">
+  		<a href="#/events/{{id}}">
 
   			<div class="row">
   				<div class="col-xs-2"></div>
