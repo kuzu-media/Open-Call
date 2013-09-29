@@ -3,6 +3,7 @@ OpenCall.directive("navbar",function()
 {
 	return {
 		restrict: "E",
+		replace: 'true',
 		templateUrl: "app/views/partials/navbar.html"
 	};
 });

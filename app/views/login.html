@@ -2,11 +2,11 @@
 
 <form name="login_form" ng-submit="login()">
 	<div class="form-group" ng-class="{'has-error':login_form.email_invalid}">
-		<div ng-show="user.error">{{user.error}}</div>
+		<div ng-show="login_user.error">{{login_user.error}}</div>
 		<input
 			class="form-control"
 			name="email"
-			ng-model="user.email"
+			ng-model="login_user.email"
 			placeholder="email"
 			type="email"
 			required
@@ -20,7 +20,7 @@
 		<input
 			class="form-control"
 			name="password"
-			ng-model="user.password"
+			ng-model="login_user.password"
 			placeholder="password"
 			type="password"
 			required
