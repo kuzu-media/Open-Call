@@ -18,7 +18,7 @@
 			name="type"
 			placeholder="Type"
 			class="form-control"
-			typeahead="cat.name for cat in subcategories | filter:$viewValue | limitTo:8"
+			typeahead="cat.name for cat in subcategories | toArray | filter:$viewValue | limitTo:8"
 			typeahead-on-select="event.cat_id = $item.$id"
 		/>
 	</div>

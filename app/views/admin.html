@@ -46,7 +46,7 @@
 	<li ng-repeat="(id,cat) in categories">
 		{{cat.name}}
 		<ul>
-			<li ng-repeat="(id,sub) in subcategories | filter:{category: id}">{{sub.name}} <a ng-click="delete(id)" class="text-danger">X</a></li>
+			<li ng-repeat="(id,sub) in subcategories | toArray | filter:{category: id}">{{sub.name}} <a ng-click="delete(id)" class="text-danger">X</a></li>
 		</ul>
 	</li>
 </ul>
