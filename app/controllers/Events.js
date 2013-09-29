@@ -14,8 +14,11 @@ OpenCall.controller("Events",['angularFire','firebaseRefManager','FIREBASE_URL',
 			$scope.event = $scope.events[$routeParams.event_id];
 			$scope.event.id = $routeParams.event_id;
 			$rootScope.page_title = $scope.event.title;
+			angularFire(firebaseRefManager(FIREBASE_URL+"users").child($scope.event.host.id),$scope,'host');
 		}
+		console.log('$scope.events',$scope.events);
 	});
+
 
 	$scope.create = function()
 	{
@@ -36,21 +39,20 @@ OpenCall.controller("Events",['angularFire','firebaseRefManager','FIREBASE_URL',
 		}
 		$scope.event.requests.push($rootScope.user.id);
 
-		angularFire(firebaseRefManager(FIREBASE_URL+"users/"+$scope.event.host.id),$scope,'host').then(function()
-		{
-			if(!$scope.host.notification_count){$scope.host.notification_count = 0;}
-			$scope.host.notification_count++;
-		});
 		$scope.notifications = {};
-		var not_ref = firebaseRefManager(FIREBASE_URL+"notifications/"+$scope.event.host.id);
-		angularFire(not_ref,$scope,'notifications');
-
-		var not = {
+		var not_ref = firebaseRefManager(FIREBASE_URL+"notifications").child($scope.event.host.id);
+		angularFire(not_ref,$scope,'notifications').then(function()
+		{
+			var not = {
 				type: 1,
 				event_id: $scope.event.id,
 				user_id: $rootScope.user.id
 			};
-		$scope.notifications[not_ref.push().name()] = not;
+			$scope.notifications[not_ref.push().name()] = not;
+		});
+
+		if(!$scope.host.notification_count){$scope.host.notification_count = 0;}
+		$scope.host.notification_count++;
 	};
 }
 ]);
