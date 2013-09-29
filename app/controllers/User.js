@@ -6,7 +6,7 @@ OpenCall.controller("User",['$scope','$rootScope','$location','angularFireAuth',
 	$scope.login = function()
 	{
 		// pass the user
-		angularFireAuth.login("password",$scope.user).then(function()
+		angularFireAuth.login("password",$scope.login_user).then(function()
 		{
 			$location.path("/");
 		});
@@ -24,16 +24,11 @@ OpenCall.controller("User",['$scope','$rootScope','$location','angularFireAuth',
 		angularFireAuth.createUser($scope.new_user.email,$scope.new_user.password,function(err,user){
 			if(user)
 			{
-				$scope.users = {};
-				angularFire(firebaseRefManager(FIREBASE_URL+"users"),$scope, 'users').then(function(){});
+				angularFire(firebaseRefManager(FIREBASE_URL+"users/"+user.id),$rootScope, 'user').then(function(){});
 
-				$scope.users[user.id] = {
-					first_name: $scope.new_user.first_name,
-					last_name: $scope.new_user.last_name
-				};
-
-				console.log('$scope.users',$scope.users);
-
+				$rootScope.user.id = user.id;
+				$rootScope.user.first_name = $scope.new_user.first_name;
+				$rootScope.user.last_name = $scope.new_user.last_name;
 
 				$location.path("/");
 			}
@@ -61,5 +56,6 @@ OpenCall.controller("User",['$scope','$rootScope','$location','angularFireAuth',
 	$scope.$on("angularFireAuth:login", function() {
 
 		angularFire(firebaseRefManager(FIREBASE_URL+"users").child($rootScope.user.id), $rootScope, 'user');
+		$rootScope.logged_in = true;
 	});
 }]);
