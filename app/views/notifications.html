@@ -1,8 +1,30 @@
 <h1>Event Requests</h1>
-<a ng-click="log_scope()">Log Scope</a>
-<div class="list-group" ng-repeat="not in notifcations | filter:{type:1}">
-  <a href="#/user/{{not.user_id}}" class="list-group-item">
-    <h4 class="list-group-item-heading">{{users[not.user_id].first_name}} {{users[not.user_id].last_name}}</h4>
-    <p class="list-group-item-text">{{events[not.event_id].title}}</p>
-  </a>
+<div class="list-group" ng-repeat="(id,not) in notifications | toArray | filter:{type:1}">
+  <div class="list-group-item row">
+  	<div class="col-md-6">
+  		<h4 class="list-group-item-heading">
+  			<a href="#/user/{{not.user_id}}">{{users[not.user_id].first_name}} {{users[not.user_id].last_name}}</a>
+  		</h4>
+  		<p>
+  			<a href="#/events/{{not.event_id}}">{{events[not.event_id].title}}</a>
+  		</p>
+    </div>
+    <div class="col-md-6">
+    	<div class="row">
+			<div class="col-xs-6">
+				<a ng-click="accept(not.$key)" class="btn btn-danger btn-block">Decline</a>
+			</div>
+			<div class="col-xs-6">
+				<a ng-click="accept(not.$key)" class="btn btn-primary btn-block">Accept</a>
+			</div>
+    	</div>
+    </div>
+  </div>
+</div>
+
+<h1>Event Acceptence</h1>
+<div class="list-group" ng-repeat="(id,not) in notifications | toArray | filter:{type: 2}">
+  <div class="list-group-item row">
+  	<p class="list-group-item-text">You have been accepted to <a ng-click="view_acceptence(not.$key,not.event_id)">{{events[not.event_id].title}}</a></p>
+  </div>
 </div>

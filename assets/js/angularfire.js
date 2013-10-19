@@ -204,7 +204,6 @@ AngularFire.prototype = {
   _watch: function($scope,name,child) {
     var self = this;
     var fullname = self._get_name(name,child);
-    console.log('ran');
     self._unregister = $scope.$watch(fullname, function() {
       // We ignore local value changes until the first value was received
       // from the server.
@@ -217,7 +216,6 @@ AngularFire.prototype = {
       if (angular.equals(val, self._remoteValue)) {
         return;
       }
-      console.log('changed');
       var check = Object.prototype.toString;
       if (check.call(val) == "[object Object]") {
         // Use update if limits are in effect, set if not.
