@@ -37,7 +37,7 @@ OpenCall.controller("Events",['angularFire','firebaseRefManager','FIREBASE_URL',
 		{
 			$scope.event.requests = [];
 		}
-		$scope.event.requests.push($rootScope.user.id);
+		$scope.event.requests.push($rootScope.user_login.id);
 
 		$scope.notifications = {};
 		var not_ref = firebaseRefManager(FIREBASE_URL+"notifications").child($scope.event.host.id);

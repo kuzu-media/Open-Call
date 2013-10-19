@@ -1,0 +1,8 @@
+<h1>Event Requests</h1>
+<a ng-click="log_scope()">Log Scope</a>
+<div class="list-group" ng-repeat="not in notifcations | filter:{type:1}">
+  <a href="#/user/{{not.user_id}}" class="list-group-item">
+    <h4 class="list-group-item-heading">{{users[not.user_id].first_name}} {{users[not.user_id].last_name}}</h4>
+    <p class="list-group-item-text">{{events[not.event_id].title}}</p>
+  </a>
+</div>

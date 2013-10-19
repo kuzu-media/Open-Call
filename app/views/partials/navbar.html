@@ -10,28 +10,34 @@
 			<button type="button" class="btn btn-default navbar-btn pull-left" back-button>Back</button>
 			<a class="navbar-brand" href="#">{{page_title}}</a>
 		</div>
-		<div ng-show="logged_in" collapse="isCollapsed" class="collapse navbar-collapse">
+		<div collapse="isCollapsed" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li>
+				<li ng-show="logged_in">
 					<a href="#/">Events</a>
 				</li>
-				<li>
+				<li ng-show="logged_in">
 					<a href="#/create">Create Event</a>
 				</li>
-				<li>
+				<li ng-show="logged_in">
 					<a href="#/profile">My Profile</a>
 				</li>
-				<li>
+				<li ng-show="logged_in">
 					<a href="#/chat">Chat</a>
 				</li>
-				<li>
+				<li ng-show="logged_in">
 					<a href="#/notifications">Notifcations <span class="badge">{{user.notification_count}}</span></a>
 				</li>
-				<li>
+				<li ng-show="logged_in">
 					<a href="#/admin">Admin</a>
 				</li>
-				<li>
+				<li ng-show="logged_in">
 					<a ng-click="logout()">Logout</a>
+				</li>
+				<li ng-hide="logged_in">
+					<a href="#/join">Join</a>
+				</li>
+				<li ng-hide="logged_in">
+					<a href="#/login">Login</a>
 				</li>
 			</ul>
 		</div>

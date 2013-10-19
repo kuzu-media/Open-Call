@@ -53,9 +53,9 @@ OpenCall.controller("User",['$scope','$rootScope','$location','angularFireAuth',
 
 	});
 
-	$scope.$on("angularFireAuth:login", function() {
+	$scope.$on("angularFireAuth:login", function(evt, user) {
 
-		angularFire(firebaseRefManager(FIREBASE_URL+"users").child($rootScope.user.id), $rootScope, 'user');
+		angularFire(firebaseRefManager(FIREBASE_URL+"users").child(user.id), $rootScope, 'user');
 		$rootScope.logged_in = true;
 	});
 }]);

@@ -6,7 +6,7 @@ var OpenCall = angular.module("OpenCall", ["firebase","ui.bootstrap"]);
 OpenCall.run(['angularFireAuth',"FIREBASE_URL","firebaseRefManager","$rootScope",'$route',function(angularFireAuth,FIREBASE_URL,firebaseRefManager,$rootScope, $route)
 {
 	var firbase_ref = firebaseRefManager(FIREBASE_URL);
-	angularFireAuth.initialize(firbase_ref,{'scope': $rootScope,'name':'user','path':'/welcome'});
+	angularFireAuth.initialize(firbase_ref,{'scope': $rootScope,'name':'user_login','path':'/welcome'});
 
 	$rootScope.page_title = 'Welcome';
 	$rootScope.$on('$routeChangeSuccess', function() {
